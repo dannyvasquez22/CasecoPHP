@@ -35,7 +35,7 @@
 			<form action="" class="formulario" name="formulario_login" method="POST">
 				<div>
 					<div class="input-group">
-						<input type="text" id="usuario" name="usuario">
+						<input type="text" id="usuario" name="usuario" autofocus="true">
 						<label class="label" for="usuario">Usuario:</label>
 					</div>
 					<div class="input-group">
@@ -48,6 +48,6 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="js/formulario.js"></script>
+	<script type="text/javascript" src="js/formularioLogin.js"></script>
 </body>
 </html>
