@@ -1,0 +1,16 @@
+/* Ensure that the demo table scrolls */
+    th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 100%;
+        margin: 0 auto;
+    }
+ 
+    th input {
+        width: 90%;
+    }
+
+    tfoot {
+		display: table-header-group;
+		width: 100%;
+        box-sizing: border-box;
+    }
