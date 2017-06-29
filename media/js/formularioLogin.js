@@ -1,6 +1,6 @@
-// Recorrer los elementos y hacer que onchange ejecute una funcion para comprobar el valor de ese input
-(function() {
+$(document).ready(function(){
 
+// Recorrer los elementos y hacer que onchange ejecute una funcion para comprobar el valor de ese input
   var formulario = document.formulario_login,
     elementos = formulario.elements;
 
@@ -54,6 +54,22 @@
     }
   }
 
+  $('.formulario').on('click', '#btn-submit', function() {
+    var user = document.getElementById('usuario').value;
+    var passwd = document.getElementById('password').value;
+    messageError(user, passwd);
+  });
 
+});
 
-}())
+function messageError(usuario, password) {
+    /*alert(usuario + ' - ' +password);*/
+    $.ajax({
+        url: "controllers/usuario/login.php",
+        type: "POST",
+        data: "usuario="+usuario+"&password="+password,
+        success: function(resp){
+          $('#login-alert').html(resp); 
+        }       
+    });
+}
