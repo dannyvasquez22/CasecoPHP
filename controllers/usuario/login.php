@@ -1,5 +1,5 @@
 <?php
-	require_once 'models/bl/usuarioBL.php';
+	require_once '../../models/bl/usuarioBL.php';
 
 	session_start(); //Iniciar una nueva sesión o reanudar la existente
 
@@ -12,7 +12,7 @@
 
 		if (strcmp($msg, 'OK') == 0) {
 			/*header('Location: welcome.php');*/
-			echo "<script language='javascript'>window.location='welcome.php'</script>;";
+			echo "<script language='javascript'>window.location='welcome.php'</script>";
 		} else {
 			echo $msg;
 		}

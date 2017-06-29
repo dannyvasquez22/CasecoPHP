@@ -39,13 +39,13 @@
 	</div>
 	<script type="text/javascript">
 		function messageError(usuario, password) {
-	        alert(usuario + ' - ' +password);
+	        /*alert(usuario + ' - ' +password);*/
 	        $.ajax({
-	            url: "login.php",
+	            url: "controllers/usuario/login.php",
 	            type: "POST",
 	            data: "usuario="+usuario+"&password="+password,
 	            success: function(resp){
-	            $('#login-alert').html(resp);
+            		$('#login-alert').html(resp); 
 	            }       
 	        });
 	    }

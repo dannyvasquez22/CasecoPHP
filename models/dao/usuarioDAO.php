@@ -24,7 +24,8 @@ class UsuarioDAO implements IUsuario {
 	}
 
 	public static function getAll() {
-		$listUsuarios = null;
+		$listUsuarios = array();
+		$usuario = null;
 		$sql = Database::getInstance()->prepare("SELECT usu_cuenta, usu_contraseña, usu_ipReferencia, usu_estadoConexion, usu_estado, detcarg_codigo FROM usuario");
 		$sql->execute();
 		/*$data = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -41,8 +42,10 @@ class UsuarioDAO implements IUsuario {
 		}
 		return $listUsuarios;
 		*/
-
-		$listUsuarios = $sql->setFetchMode(PDO::FETCH_CLASS, 'Usuario');
+		while ($sql->fetch()) {
+			$usuario = $sql->setFetchMode(PDO::FETCH_CLASS, 'Usuario');
+			array_push($listUsuarios, $usuario);
+		}
 
 		return $listUsuarios;
 	}

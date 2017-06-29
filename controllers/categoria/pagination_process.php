@@ -92,9 +92,10 @@
 			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['id']?>"  ><i class='glyphicon glyphicon-trash'></i> Eliminar</button>
 		</td>*/
 		
-		$row[] = "<td><a href='../../views/categoria/update.php?nombre=".$aRow['cate_nombre']."&&descripcion=".$aRow['cate_descripcion']."'><span class='glyphicon glyphicon-pencil'></span></a></td>";
+/*		$row[] = "<td><a href='../../views/categoria/update.php?nombre=".$aRow['cate_nombre']."&&descripcion=".$aRow['cate_descripcion']."'><span class='glyphicon glyphicon-pencil'></span></a></td>";*/
 		$row[] = "<td><a href='#'' data-nombre=".$aRow['cate_nombre']." data-descripcion=".$aRow['cate_descripcion']." data-toggle='modal' data-target='#confirm-update'><span class='glyphicon glyphicon-pencil'></span></a></td>";
-		$row[] = "<td><a href='#'' data-href='../../views/categoria/delete.php?nombre=".$aRow['cate_nombre']."' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash'></span></a></td>";
+		/*$row[] = "<td><a href='#'' data-href='../../views/categoria/delete.php?nombre=".$aRow['cate_nombre']."' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash'></span></a></td>";*/
+		$row[] = "<td><a href='#'' data-nombre=".$aRow['cate_nombre']." data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash'></span></a></td>";
 		$output['aaData'][] = $row;
 	}
 	
