@@ -1,19 +1,20 @@
 <?php
 	session_start();
 	require 'controllers/config.php';
-	
+
+/*	$usuario = $_SESSION["usuario"];
+
 	if(!isset($_SESSION["usuario"])){ //Si no ha iniciado sesión redirecciona a index.php
 		header("Location: index.php");
-	}
+	}	*/
 	
-	$usuario = $_SESSION['usuario'];
 ?>
  
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="css/menu-principal.css">
-		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="media/css/menu-principal.css">
+		<script type="text/javascript" src="media/js/jquery-3.2.1.min.js"></script>
 		<title>Learning 1.0</title>
 	</head>
 	
@@ -43,6 +44,6 @@
 		<footer>
 			Hecho por Danny Vasquez
 		</footer>
-		<script type="text/javascript" src="js/mostrar-nav.js"></script>
+		<script type="text/javascript" src="media/js/mostrar-nav.js"></script>
 	</body>
 </html>

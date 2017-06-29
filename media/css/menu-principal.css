@@ -63,9 +63,9 @@ footer a:hover{
 
 .menu a{
 	color: #ddd;
-	display: block; /*ocupe todo el ancho del div o pagina donde se encuentre*/
 	text-decoration: none; /*quitar el subrayado del enlace*/
 	text-transform: uppercase; /*transformar a mayusculas los elementos*/
+	display: block; /*ocupe todo el ancho del div o pagina donde se encuentre*/
 	width: 100%; /*hace que el puntero cambie en toda la caja solo funciona con la propiedad anterior*/
 	--webkit-transition: all .8s; /*efecto de transicion*/
 	-o-transition: all .8s;
@@ -89,14 +89,20 @@ footer a:hover{
 	box-shadow: 15em 0 rgba(255, 255, 255, .2) inset;
 }
 
+.menu li:hover > ul{
+	background: rgba(0, 0, 0, .8);
+	display: block; /*para que el usuario no haga click para expander*/
+}
+
 .menu li ul li{
 	box-shadow: 3px 0 rgba(255, 255, 255, .2) inset; /*crea sombra en forma de cada hacia dentro*/
-	margin-left: -20px;
+	margin-left: -50px;
 	margin-bottom: 5px; /*margen inferior*/
-	padding-left: 1.5em; /*margen desde la izquierda*/
+	padding-left: 1.5em; /*margen desde la izquierda */
 	--webkit-transition: all .8s; /*efecto de transicion*/
 	-o-transition: all .8s;
 	transition: all .8s;
+	background: rgba(0, 0, 0, .8);
 }
 
 .menu ul{
