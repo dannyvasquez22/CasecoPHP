@@ -11,7 +11,7 @@
 			<form action="return false" onsubmit="return false" class="formulario" name="formulario_login" method="POST">
 				<div>
 					<div class="input-group">
-						<input type="text" id="usuario" name="usuario" autofocus="true">
+						<input type="text" id="usuario" name="usuario">
 						<label class="label" for="usuario">Usuario:</label>
 					</div>
 					<div class="input-group">

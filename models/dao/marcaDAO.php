@@ -36,9 +36,9 @@ class MarcaDAO implements IMarca {
         $listMarcas = array();
         $marca = null;
         if (isEmpty($nombre)) {
-            $sql = Database::getInstance()->prepare("SELECT marca_nombre AS nombre, marca_descripcion AS descripcion FROM marca ORDER BY marca_nombre");
+            $sql = Database::getInstance()->prepare("SELECT marca_nombre, marca_descripcion FROM marca ORDER BY marca_nombre");
         } else {
-            $sql = Database::getInstance()->prepare("SELECT marca_nombre AS nombre, marca_descripcion AS descripcion FROM marca WHERE marca_nombre LIKE :nombre ORDER BY marca_nombre");
+            $sql = Database::getInstance()->prepare("SELECT marca_nombre, marca_descripcion FROM marca WHERE marca_nombre LIKE :nombre ORDER BY marca_nombre");
             $sql->bindParam(':nombre', $nombre . '%');
         }
         $sql->execute();

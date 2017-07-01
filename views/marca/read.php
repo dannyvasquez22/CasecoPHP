@@ -1,6 +1,3 @@
-<?php
-	require '../../controllers/config.php';
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,7 +18,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h2 style="text-align:center">Categorias</h2>
+			<h2 style="text-align:center">Marcas</h2>
 		</div>
 
 		<div class="row">
@@ -32,7 +29,7 @@
 		<br><br>
 
 		<div class="row table-responsive">
-			<table class="display" id="tblCategoria">
+			<table class="display" id="tblMarca">
 				<thead>
 					<tr>
 						<th>Nombre</th>
@@ -162,6 +159,6 @@
 	    </div>
    	</div>
 
-	<script src="../../media/js/categoria.js"></script>
+	<script src="../../media/js/marca.js"></script>
 </body>
 </html>

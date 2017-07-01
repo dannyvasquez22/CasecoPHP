@@ -29,7 +29,7 @@
 				<li><a href="#">Unitarios</a>
 					<ul>
 					  		<li><a href="views/categoria/read.php">Categorias</a></li>
-					  		<li><a href="#">aaa</a></li>
+					  		<li><a href="views/marca/read.php">Marcas</a></li>
 					  		<li><a href="#">bbb</a></li>					
 					</ul>
 				</li>
