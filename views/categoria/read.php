@@ -1,32 +1,12 @@
-<?php
-	require '../../controllers/config.php';
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<!-- Proviene de boostrap para que sea responsive -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../../media/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="../../media/css/bootstrap-theme.css">
-	<link rel="stylesheet" type="text/css" href="../../media/css/jquery.dataTables.min.css">
-	<link rel="stylesheet" type="text/css" href="../../media/css/myDatatable.css">
-	<script type="text/javascript" src="../../media/js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="../../media/js/tether.min.js"></script>
-	<script type="text/javascript" src="../../media/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../../media/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="../../media/js/dataTables.fixedColumns.min.js"></script>
-	<meta charset="utf-8">
-	<title>Learning 1.0</title>
-</head>
-<body>
+<?php require_once '../../header.php'; ?>
 	<div class="container">
 		<div class="row">
 			<h2 style="text-align:center">Categorias</h2>
 		</div>
 
 		<div class="row">
-			<a hhref='#' class="btn btn-primary" data-toggle='modal' data-target='#confirm-insert'>Nuevo Registro</a>
-			<a href="../../welcome.php" class="btn btn-primary">Regresar</a>
+			<a hhref='#' class="btn btn-primary btnExternalDatatable" data-toggle='modal' data-target='#confirm-insert'>Nuevo Registro</a>
+			<a href="../../welcome.php" class="btn btn-primary btnExternalDatatable">Regresar</a>
 		</div>
 
 		<br><br>
@@ -61,7 +41,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="row">
-					<h3 style="text-align:center">NUEVO REGISTRO</h3>
+					<h3 class="tituloh3">NUEVO REGISTRO</h3>
 				</div>
 				
 				<form class="form-horizontal" method="POST" action="return false" onsubmit="return false" autocomplete="off">
@@ -97,7 +77,7 @@
 				
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="DeleteModal">Eliminar Registro</h4>
+					<h4 class="modal-title tituloh3" id="DeleteModal">Eliminar Registro</h4>
 				</div>
 				
 				<div class="modal-body">
@@ -119,7 +99,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="row">
-					<h3 style="text-align:center">MODIFICAR REGISTRO</h3>
+					<h3 class="tituloh3">MODIFICAR REGISTRO</h3>
 				</div>
 				
 				<form class="form-horizontal" method="POST" action="return false" onsubmit="return false" autocomplete="off">
@@ -153,7 +133,7 @@
 			<div class="modal-content">
 		        <div class="modal-header">
 		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		          <h4 class="modal-title" id="message">X</h4>
+		          <h4 class="modal-title texto" id="message">X</h4>
 		        </div>
 		        <div class="modal-footer">
 		          <button type="button" class="btn btn-ok" data-dismiss="modal">Aceptar</button>
@@ -162,6 +142,10 @@
 	    </div>
    	</div>
 
+
+	</div>        <!-- /#page-content-wrapper -->
+
+	    </div>    <!-- /#wrapper -->
 	<script src="../../media/js/categoria.js"></script>
-</body>
-</html>
+
+<?php require_once '../../footer.php'; ?>

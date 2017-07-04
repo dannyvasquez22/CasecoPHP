@@ -1,5 +1,6 @@
 <?php
-	require '../config.php';
+	/*require '../config.php';*/
+	require_once '../../models/database.php';
 	
 	/* Nombre de La Tabla */
 	$sTabla = " categoria";
@@ -57,19 +58,25 @@
 		
 	//Obtener datos para mostrar SQL queries
 	$sQuery = " SELECT SQL_CALC_FOUND_ROWS ".str_replace(" , ", " ", implode(", ", $aColumnas))." FROM $sTabla $sWhere $sOrder $sLimit ";
-	$rResult = $mysqli->query($sQuery);
+	$rResult = Database::getInstance()->prepare($sQuery);
+	$rResult->execute();
+/*	$rResult = $rResult->fetchAll(PDO::FETCH_ASSOC);*/
 	
 	/* Data set length after filtering */
 	$sQuery = " SELECT FOUND_ROWS()	";
-	$rResultFilterTotal = $mysqli->query($sQuery);
-	$aResultFilterTotal = $rResultFilterTotal->fetch_array();
-	$iFilteredTotal = $aResultFilterTotal[0];
+	$rResultFilterTotal = Database::getInstance()->prepare($sQuery);
+	$rResultFilterTotal->execute();
+	while ($row = $rResultFilterTotal->fetch()) {
+        $iFilteredTotal = $row['FOUND_ROWS()'];
+    }
 	
 	/* Total data set length */
-	$sQuery = " SELECT COUNT(".$sIndexColumn.")	FROM $sTabla ";
-	$rResultTotal = $mysqli->query($sQuery);
-	$aResultTotal = $rResultTotal->fetch_array();
-	$iTotal = $aResultTotal[0];
+	$sQuery = " SELECT COUNT(".$sIndexColumn.") AS cant FROM $sTabla ";
+	$rResultTotal = Database::getInstance()->prepare($sQuery);
+	$rResultTotal->execute();
+	while ($row = $rResultTotal->fetch()) {
+        $iTotal = $row['cant'];
+    }
 	
 	/*
 		* Output
@@ -81,21 +88,15 @@
 		"aaData" => array()
 	);
 	
-	while ( $aRow = $rResult->fetch_array()) {
+	$data = $rResult->fetchAll(PDO::FETCH_ASSOC);
+	foreach ( $data as $aRow ) {
 		$row = array();
 		for ( $i=0 ; $i<count($aColumnas) ; $i++ ) {
 			$row[] = ($aRow[ $aColumnas[$i] ]=="0") ? '-' : $aRow[ $aColumnas[$i] ];
 		}
 		
-/*		<td>
-			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#dataUpdate" data-id="<?php echo $row['id']?>" data-codigo="<?php echo $row['countryCode']?>" data-nombre="<?php echo $row['countryName']?>" data-moneda="<?php echo $row['currencyCode']?>" data-capital="<?php echo $row['capital']?>" data-continente="<?php echo $row['continentName']?>"><i class='glyphicon glyphicon-edit'></i> Modificar</button>
-			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['id']?>"  ><i class='glyphicon glyphicon-trash'></i> Eliminar</button>
-		</td>*/
-		
-/*		$row[] = "<td><a href='../../views/categoria/update.php?nombre=".$aRow['cate_nombre']."&&descripcion=".$aRow['cate_descripcion']."'><span class='glyphicon glyphicon-pencil'></span></a></td>";*/
-		$row[] = "<td><a href='#'' data-nombre=".$aRow['cate_nombre']." data-descripcion=".$aRow['cate_descripcion']." data-toggle='modal' data-target='#confirm-update'><span class='glyphicon glyphicon-pencil'></span></a></td>";
-		/*$row[] = "<td><a href='#'' data-href='../../views/categoria/delete.php?nombre=".$aRow['cate_nombre']."' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash'></span></a></td>";*/
-		$row[] = "<td><a href='#'' data-nombre=".$aRow['cate_nombre']." data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash'></span></a></td>";
+		$row[] = "<td><a href='#'' data-nombre=".$aRow['cate_nombre']." data-descripcion=".$aRow['cate_descripcion']." data-toggle='modal' data-target='#confirm-update'><span class='glyphicon glyphicon-pencil iconosDatatable'></span></a></td>";
+		$row[] = "<td><a href='#'' data-nombre=".$aRow['cate_nombre']." data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash iconosDatatable'></span></a></td>";
 		$output['aaData'][] = $row;
 	}
 	

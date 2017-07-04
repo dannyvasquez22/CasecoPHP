@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$('#tblCategoria tfoot th').each( function () {
     	var title = $(this).text();
     	if (title != "") {
-    		$(this).html( '<input type="text" placeholder="Escriba '+title+'" />' );
+    		$(this).html( '<input type="text"/>' );
     	}
 	});
 

@@ -2,7 +2,8 @@ $(document).ready(function(){
 	$('#tblMarca tfoot th').each( function () {
     	var title = $(this).text();
     	if (title != "") {
-    		$(this).html( '<input type="text" placeholder="Escriba '+title+'" />' );
+    		/*$(this).html( '<input type="text" placeholder="Escriba '+title+'" />' );*/
+    		$(this).html( '<input type="text"/>' );
     	}
 	});
 

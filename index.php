@@ -3,7 +3,10 @@
 <head>	
 	<meta charset="utf-8">
 	<title>Learning 1.0</title>
-	<?php require_once('headLogin.php'); ?>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="media/css/estiloSASS.css">
+	<script type="text/javascript" src="media/js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 	<div class="contenedor-formulario">    
