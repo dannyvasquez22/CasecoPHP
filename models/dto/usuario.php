@@ -51,7 +51,7 @@ class Usuario {
     }    
 
     public function getCuenta() {
-        return $cuenta;
+        return $this->cuenta;
     }
 
     public function setCuenta($cuenta) {
@@ -59,7 +59,7 @@ class Usuario {
     }
 
     public function getContraseña() {
-        return $contraseña;
+        return $this->contraseña;
     }
 
     public function setContraseña($contraseña) {
@@ -67,7 +67,7 @@ class Usuario {
     }
 
     public function getIpReferencia() {
-        return $ipReferencia;
+        return $this->ipReferencia;
     }
 
     public function setIpReferencia($ipReferencia) {
@@ -75,7 +75,7 @@ class Usuario {
     }
 
     public function getEstadoConexion() {
-        return $estadoConexion;
+        return $this->estadoConexion;
     }
 
     public function setEstadoConexion($estadoConexion) {
@@ -83,7 +83,7 @@ class Usuario {
     }
 
     public function getEstado() {
-        return $estado;
+        return $this->estado;
     }
 
     public function setEstado($estado) {
@@ -91,7 +91,7 @@ class Usuario {
     }
 
     public function getDetalleCargo() {
-        return $detalleCargo;
+        return $this->detalleCargo;
     }
 
     public function setDetalleCargo($detalleCargo) {

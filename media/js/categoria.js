@@ -52,8 +52,8 @@ $(document).ready(function(){
 		$('#confirm-insert').on('click', '#btn-ingresar', function() {
 			var name = $('#confirm-insert #nombre').val();
 			var description = $('#confirm-insert #descripcion').val();
-			alert(name);
-			/*insert(name, description);*/
+			/*alert(name);*/
+			insert(name, description);
 		});
 	});
 

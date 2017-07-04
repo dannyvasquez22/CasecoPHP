@@ -57,7 +57,7 @@ class MarcaDAO implements IMarca {
         $sql->bindParam(':nombre', $marca->getNombre());
         $sql->bindParam(':descripcion', $marca->getDescripcion());
         $result = $sql->execute();
-        
+
         return $result > 0;
     }
 

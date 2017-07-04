@@ -52,8 +52,8 @@ $(document).ready(function(){
 		$('#confirm-insert').on('click', '#btn-ingresar', function() {
 			var name = $('#confirm-insert #nombre').val();
 			var description = $('#confirm-insert #descripcion').val();
-			alert(name);
-			/*insert(name, description);*/
+			/*alert(name);*/
+			insert(name, description);
 		});
 	});
 
@@ -88,7 +88,7 @@ $(document).ready(function(){
 
 function modify(nombre, descripcion, referencia) {
     $.ajax({
-        url: "../../controllers/categoria/update.php",
+        url: "../../controllers/marca/update.php",
         type: "POST",
         data: "nombre="+nombre+"&descripcion="+descripcion+"&referencia="+referencia,
         success: function(resp){
@@ -108,7 +108,7 @@ function modify(nombre, descripcion, referencia) {
 
 function remove(nombre) {
     $.ajax({
-        url: "../../controllers/categoria/delete.php",
+        url: "../../controllers/marca/delete.php",
         type: "POST",
         data: "nombre="+nombre,
         success: function(resp){
@@ -127,11 +127,12 @@ function remove(nombre) {
 
 function insert(nombre, descripcion) {
 	$.ajax({
-		url: "../../controllers/categoria/create.php",
+		url: "../../controllers/marca/create.php",
 		type: "POST",
 		data: "nombre="+nombre+"&descripcion="+descripcion,
 		success: function(resp){
 			if (resp) {
+				/*alert(resp);*/
     			$('#msg-modal #message').text('Elemento insertado');
     			$('#msg-modal').modal("show");
     			$('#confirm-insert').modal("hide");

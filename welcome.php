@@ -38,9 +38,9 @@
 		</nav>
 
 		<header>
-			<h1>Menú vertical</h1> 
+			<h1>Menú Principal</h1> 
 		</header>
-		<article><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus nostrum totam libero perferendis non, mollitia! Eaque at perspiciatis vitae repudiandae quam distinctio cum incidunt laboriosam, odit alias animi, similique enim.</p></article>
+		<article><p>En el lado derecha podrá desplegar un menú vertical con todas las opciones disponibles para el administrador.</p></article>
 		<footer>
 			Hecho por Danny Vasquez
 		</footer>

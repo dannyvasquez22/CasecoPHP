@@ -25,7 +25,7 @@ class Marca {
     }
 
     public function getNombre() {
-        return $nombre;
+        return $this->nombre;
     }
 
     public function setNombre($nombre) {
@@ -33,7 +33,7 @@ class Marca {
     }
 
     public function getDescripcion() {
-        return $descripcion;
+        return $this->descripcion;
     }
 
     public function setDescripcion($descripcion) {
