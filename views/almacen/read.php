@@ -1,4 +1,4 @@
-<?php 	
+<?php	
 	require_once '../../models/routes.php';
 
 	session_start();
@@ -11,7 +11,7 @@
 ?>
 	<div class="container">
 		<div class="row">
-			<h2 style="text-align:center">Marcas</h2>
+			<h2 style="text-align:center">Almacenes</h2>
 		</div>
 
 		<div class="row">
@@ -22,19 +22,21 @@
 		<br><br>
 
 		<div class="row table-responsive">
-			<table class="display" id="tblMarca">
+			<table class="display" id="tblAlmacen">
 				<thead>
 					<tr>
+						<th>Código</th>
 						<th>Nombre</th>
-						<th>Descripción</th>
+						<th>Dirección</th>
 						<th></th>
 						<th></th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
+						<th>Código</th>
 						<th>Nombre</th>
-						<th>Descripción</th>
+						<th>Dirección</th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -63,15 +65,15 @@
 					</div>
 										
 					<div class="form-group">
-						<label for="descripcion" class="col-sm-3 control-label">Descripción</label>
+						<label for="direccion" class="col-sm-3 control-label">Dirección</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" value="">
+							<input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección" value="">
 						</div>
 					</div>
 									
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-10">
-							<button id="btn-ingresar" type="submit" class="btn btn-primary">Ingresar</button>
+							<button id="btn-ingresar" type="submit" class="btn btn-primary">Insertar</button>
 							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 						</div>
 					</div>
@@ -121,9 +123,9 @@
 					</div>
 										
 					<div class="form-group">
-						<label for="descripcion" class="col-sm-3 control-label">Descripción</label>
+						<label for="direccion" class="col-sm-3 control-label">Dirección</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" value="">
+							<input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección" value="">
 						</div>
 					</div>
 									
@@ -152,9 +154,10 @@
 	    </div>
    	</div>
 
+
 	</div>        <!-- /#page-content-wrapper -->
 
 	    </div>    <!-- /#wrapper -->
-	<script src="../../media/js/marca.js"></script>
+	<script src="../../media/js/almacen.js"></script>
 
 <?php require_once '../../footer.php'; ?>

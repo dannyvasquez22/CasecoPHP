@@ -9,6 +9,8 @@
 		<!-- <link rel="stylesheet" type="text/css" href="/media/css/bootstrap-theme.css"> -->
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/myDatatable.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/animate.min.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/font-awesome.min.css">
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/sidebar.js"></script>
@@ -33,8 +35,13 @@
 	                  	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> Unitarios <span class="caret"></span></a>
 	                  	<ul class="dropdown-menu" role="menu">
 	                    	<li class="dropdown-header">Elementos:</li>
-	                    	<li><a href="<?php echo RUTA; ?>/views/categoria/read.php">Categorias</a></li>
+	                    	<li><a href="<?php echo RUTA; ?>/views/almacen/read.php">Almacenes</a></li>
+	                    	<li><a href="<?php echo RUTA; ?>/views/cargo/read.php">Cargos</a></li>
 					  		<li><a href="<?php echo RUTA; ?>/views/marca/read.php">Marcas</a></li>
+	                    	<li><a href="<?php echo RUTA; ?>/views/categoria/read.php">Categorias</a></li>
+	                    	<li><a href="<?php echo RUTA; ?>/views/unidadMedida/read.php">Unidades de Medida</a></li>
+	                    	<li><a href="<?php echo RUTA; ?>/views/tienda/read.php">Tiendas</a></li>
+	                    	<li><a href="<?php echo RUTA; ?>/views/vehiculo/read.php">Vehículos</a></li>
 	                  	</ul>
 	                </li>
 	                <!-- <li><a href="#"><i class="fa fa-fw fa-file-o"></i> Page four</a></li> -->
@@ -51,4 +58,3 @@
 					<span class="hamb-middle"></span>
 					<span class="hamb-bottom"></span>
 				</button>
-	            

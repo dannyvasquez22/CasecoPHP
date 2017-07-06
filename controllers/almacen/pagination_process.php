@@ -3,13 +3,13 @@
 	require_once '../../models/database.php';
 	
 	/* Nombre de La Tabla */
-	$sTabla = " categoria";
+	$sTabla = " almacen";
 	
 	/* Array que contiene los nombres de las columnas de la tabla*/
-	$aColumnas = array('cate_nombre', 'cate_descripcion');
+	$aColumnas = array('alm_codigo', 'alm_nombre', 'alm_direccion');
 	
 	/* columna indexada */
-	$sIndexColumn = "cate_nombre";
+	$sIndexColumn = "alm_codigo";
 	
 	// Paginacion
 	$sLimit = "";
@@ -94,9 +94,9 @@
 		for ( $i=0 ; $i<count($aColumnas) ; $i++ ) {
 			$row[] = ($aRow[ $aColumnas[$i] ]=="0") ? '-' : $aRow[ $aColumnas[$i] ];
 		}
-		
-		$row[] = "<td><a href='#'' data-nombre='".$aRow['cate_nombre']."' data-descripcion='".$aRow['cate_descripcion']."' data-toggle='modal' data-target='#confirm-update'><span class='glyphicon glyphicon-pencil iconosDatatable'></span></a></td>";
-		$row[] = "<td><a href='#'' data-nombre='".$aRow['cate_nombre']."' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash iconosDatatable'></span></a></td>";
+
+		$row[] = "<td><a href='#'' data-codigo=".$aRow['alm_codigo']." data-nombre='".$aRow["alm_nombre"]."' data-direccion='".$aRow["alm_direccion"]."' data-toggle='modal' data-target='#confirm-update'><span class='glyphicon glyphicon-pencil iconosDatatable'></span></a></td>";
+		$row[] = "<td><a href='#'' data-codigo=".$aRow['alm_codigo']." data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash iconosDatatable'></span></a></td>";
 		$output['aaData'][] = $row;
 	}
 	

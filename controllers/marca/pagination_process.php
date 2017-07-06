@@ -94,8 +94,8 @@
 			$row[] = ($aRow[ $aColumnas[$i] ]=="0") ? '-' : $aRow[ $aColumnas[$i] ];
 		}
 		
-		$row[] = "<td><a href='#'' data-nombre=".$aRow['marca_nombre']." data-descripcion=".$aRow['marca_descripcion']." data-toggle='modal' data-target='#confirm-update'><span class='glyphicon glyphicon-pencil iconosDatatable'></span></a></td>";
-		$row[] = "<td><a href='#'' data-nombre=".$aRow['marca_nombre']." data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash iconosDatatable'></span></a></td>";
+		$row[] = "<td><a href='#'' data-nombre='".$aRow['marca_nombre']."' data-descripcion='".$aRow['marca_descripcion']."' data-toggle='modal' data-target='#confirm-update'><span class='glyphicon glyphicon-pencil iconosDatatable'></span></a></td>";
+		$row[] = "<td><a href='#'' data-nombre='".$aRow['marca_nombre']."' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash iconosDatatable'></span></a></td>";
 		$output['aaData'][] = $row;
 	}
 	
