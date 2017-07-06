@@ -1,4 +1,14 @@
-<?php require_once '../../header.php'; ?>
+<?php 
+	require_once '../../header.php'; 
+	require_once '../../models/routes.php';
+
+	session_start();
+
+	if (!isset($_SESSION['usuario'])) {
+		header('Location: ' . RUTA);
+	}
+
+?>
 	<div class="container">
 		<div class="row">
 			<h2 style="text-align:center">Categorias</h2>

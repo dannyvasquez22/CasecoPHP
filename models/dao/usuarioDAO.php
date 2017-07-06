@@ -128,7 +128,7 @@ class UsuarioDAO implements IUsuario {
 				$cargo = $row['carg_nombre'];
 				$status = $row['usu_estado'];
 			}
-			if($status) {
+            if($status) {
 				$encriptado = $contraseña->encriptar($password);
 				if(strcmp($passwd, $encriptado) == 0) {
 					$_SESSION['cargo_usuario'] = $cargo;
@@ -140,7 +140,7 @@ class UsuarioDAO implements IUsuario {
 				$msg = 'El usuario esta inactivo';
 			}
 		} else {
-			$msg = 'El nombre de usuario no existe';
+			$msg = 'El usuario no existe';
 		}
 
 		return $msg;
@@ -148,7 +148,7 @@ class UsuarioDAO implements IUsuario {
 
     public static function changeConnection(Usuario $usuario, $status) {
         $result = 0;
-        $sql = Database::getInstance()->prepare("UPDATE usuario SET usu_estadoConexion = :estado WHERE usu_cuenta = :estado");
+        $sql = Database::getInstance()->prepare("UPDATE usuario SET usu_estadoConexion = :estado WHERE usu_cuenta = :cuenta");
         $sql->bindParam(':estado', $status);
         $sql->bindParam(':cuenta', $usuario->getCuenta());
         $result = $sql->execute();

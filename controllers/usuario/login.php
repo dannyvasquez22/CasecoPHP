@@ -4,13 +4,16 @@
 	session_start(); //Iniciar una nueva sesión o reanudar la existente
 
 	if(!empty($_POST)) {
-		$_SESSION["usuario"] = $_POST['usuario'];
+		$_SESSION['usuario'] = $_POST['usuario'];
+		$_SESSION['fechaAcceso'] = date("Y-m-d");
+		$_SESSION['horaInicioAcceso'] = date("H:i:s");
 /*		var_dump($_POST);*/
 		$usuario = $_POST['usuario'];
 		$password = $_POST['password'];
 		$msg = UsuarioBL::getInstance()->authenticate($usuario, $password);
 
-		if (strcmp($msg, 'OK') == 0) {
+		if (strcmp($msg, 'OK') == 0) {			
+			UsuarioBL::getInstance()->changeConnection(new Usuario($usuario), 1);
 			/*header('Location: welcome.php');*/
 			echo "<script language='javascript'>window.location='welcome.php'</script>";
 		} else {

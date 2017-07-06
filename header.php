@@ -41,6 +41,7 @@
 	                <!-- <li><a href="#"><i class="fa fa-fw fa-dropbox"></i> Page 5</a></li> -->
 	                <li><a href="#"><i class="fa fa-fw fa-twitter"></i>Contacto</a></li>
 	                <li><a href="#"><i class="fa fa-fw fa-cog"></i>Configuración</a></li>
+	                <li><a href="<?php echo RUTA; ?>/controllers/usuario/logout.php"><i class="fa fa-fw fa-sign-out"></i>Cerrar sesión</a></li>
 	            </ul>
 	        </nav>       <!-- /#sidebar-wrapper -->
 	        
