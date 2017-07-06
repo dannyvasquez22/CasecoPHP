@@ -32,6 +32,8 @@ $(document).ready(function(){
 		"sAjaxSource": "../../controllers/almacen/pagination_process.php"
 	});
 
+	$("#tblAlmacen_filter").css("display","none");  // ocultar busqueda global de datatable
+
 	table.columns().every( function () {
         var that = this;
  

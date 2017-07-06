@@ -31,6 +31,8 @@ $(document).ready(function(){
 		"sAjaxSource": "../../controllers/categoria/pagination_process.php"
 	});
 
+	$("#tblCategoria_filter").css("display","none");  // ocultar busqueda global de datatable
+
 	table.columns().every( function () {
         var that = this;
  

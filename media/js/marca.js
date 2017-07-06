@@ -32,6 +32,8 @@ $(document).ready(function(){
 		"sAjaxSource": "../../controllers/marca/pagination_process.php"
 	});
 
+	$("#tblMarca_filter").css("display","none");  // ocultar busqueda global de datatable
+
 	table.columns().every( function () {
         var that = this;
  
