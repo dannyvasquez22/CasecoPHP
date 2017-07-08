@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/myDatatable.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/animate.min.css">
-		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/font-awesome.css">
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/sidebar.js"></script>

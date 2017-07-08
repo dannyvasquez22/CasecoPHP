@@ -3,13 +3,15 @@
 	require_once '../../models/database.php';
 	
 	/* Nombre de La Tabla */
-	$sTabla = " almacen";
+	$sTabla = " cargo";
 	
 	/* Array que contiene los nombres de las columnas de la tabla*/
-	$aColumnas = array('alm_codigo', 'alm_nombre', 'alm_direccion');
+	$aColumnas = array('carg_nombre', 'carg_descripcion', 'carg_sueldoMin', 'carg_sueldoMax', 'carg_fechaCreacion', 'carg_estado');
+
+	$aAColumnas = array('carg_nombre', 'carg_descripcion', 'carg_sueldoMin', 'carg_sueldoMax', "DATE_FORMAT(carg_fechaCreacion, '%d/%m/%Y')", "IF(carg_estado = 1, 'Activo', 'Inactivo')");
 	
 	/* columna indexada */
-	$sIndexColumn = "alm_codigo";
+	$sIndexColumn = "carg_nombre";
 	
 	// Paginacion
 	$sLimit = "";
@@ -57,7 +59,7 @@
 	}
 		
 	//Obtener datos para mostrar SQL queries
-	$sQuery = " SELECT SQL_CALC_FOUND_ROWS ".str_replace(" , ", " ", implode(", ", $aColumnas))." FROM $sTabla $sWhere $sOrder $sLimit ";
+	$sQuery = " SELECT SQL_CALC_FOUND_ROWS ".str_replace(" , ", " ", implode(", ", $aAColumnas))." FROM $sTabla $sWhere $sOrder $sLimit ";
 	$rResult = Database::getInstance()->prepare($sQuery);
 	$rResult->execute();
 /*	$rResult = $rResult->fetchAll(PDO::FETCH_ASSOC);*/
@@ -91,12 +93,16 @@
 	$data = $rResult->fetchAll(PDO::FETCH_ASSOC);
 	foreach ( $data as $aRow ) {
 		$row = array();
-		for ( $i=0 ; $i<count($aColumnas) ; $i++ ) {
-			$row[] = $aRow[ $aColumnas[$i] ];
+		for ( $i=0 ; $i<count($aAColumnas) ; $i++ ) {
+			$row[] = $aRow[ $aAColumnas[$i] ];
 		}
 
-		$row[] = "<td><a href='#'' data-codigo='".$aRow['alm_codigo']."' data-nombre='".$aRow["alm_nombre"]."' data-direccion='".$aRow["alm_direccion"]."' data-toggle='modal' data-target='#confirm-update'><span class='glyphicon glyphicon-pencil iconosDatatable'></span></a></td>";
-		$row[] = "<td><a href='#'' data-codigo='".$aRow['alm_codigo']."' data-toggle='modal' data-target='#confirm-delete'><span class='glyphicon glyphicon-trash iconosDatatable'></span></a></td>";
+		$row[] = "<td><a href='#'' data-nombre='".$aRow['carg_nombre']."' data-descripcion='".$aRow["carg_descripcion"]."' data-sueldomin='".$aRow["carg_sueldoMin"]."' data-sueldomax='".$aRow["carg_sueldoMax"]."' data-estado='".$aRow["IF(carg_estado = 1, 'Activo', 'Inactivo')"]."' data-toggle='modal' data-target='#confirm-update'><span class='glyphicon glyphicon-pencil iconosDatatable'></span></a></td>";
+		if ($aRow["IF(carg_estado = 1, 'Activo', 'Inactivo')"] == 1 || $aRow["IF(carg_estado = 1, 'Activo', 'Inactivo')"] == 'Activo') {
+			$row[] = "<td><a href='#'' data-nombre='".$aRow['carg_nombre']."' data-estado='".$aRow["IF(carg_estado = 1, 'Activo', 'Inactivo')"]."' data-toggle='modal' data-target='#confirm-delete' onclick='msg(1);'><span class='glyphicon glyphicon-trash iconosDatatable'></span></a></td>"; 
+		} else {
+			$row[] = "<td><a href='#'' data-nombre='".$aRow['carg_nombre']."' data-estado='".$aRow["IF(carg_estado = 1, 'Activo', 'Inactivo')"]."' data-toggle='modal' data-target='#confirm-delete' onclick='msg(0);'><span class='glyphicon glyphicon-share-alt iconosDatatable'></span></a></td>"; 
+		}
 		$output['aaData'][] = $row;
 	}
 	

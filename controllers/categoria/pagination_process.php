@@ -38,7 +38,7 @@
 	if ( $_GET['sSearch'] != "" ) {
 		$sWhere = "WHERE (";
 		for ( $i=0 ; $i<count($aColumnas) ; $i++ ) {
-			$sWhere .= $aColumnas[$i]." LIKE '%".$_GET['sSearch']."%' OR ";
+			$sWhere .= $aColumnas[$i]." LIKE '".$_GET['sSearch']."%' OR ";
 		}
 		$sWhere = substr_replace( $sWhere, "", -3 );
 		$sWhere .= ')';
@@ -52,7 +52,7 @@
 			} else {
 				$sWhere .= " AND ";
 			}
-			$sWhere .= $aColumnas[$i]." LIKE '%".$_GET['sSearch_'.$i]."%' ";
+			$sWhere .= $aColumnas[$i]." LIKE '".$_GET['sSearch_'.$i]."%' ";
 		}
 	}
 		
@@ -92,7 +92,7 @@
 	foreach ( $data as $aRow ) {
 		$row = array();
 		for ( $i=0 ; $i<count($aColumnas) ; $i++ ) {
-			$row[] = ($aRow[ $aColumnas[$i] ]=="0") ? '-' : $aRow[ $aColumnas[$i] ];
+			$row[] = $aRow[ $aColumnas[$i] ];
 		}
 		
 		$row[] = "<td><a href='#'' data-nombre='".$aRow['cate_nombre']."' data-descripcion='".$aRow['cate_descripcion']."' data-toggle='modal' data-target='#confirm-update'><span class='glyphicon glyphicon-pencil iconosDatatable'></span></a></td>";

@@ -1,13 +1,12 @@
 $(document).ready(function(){
-	$('#tblMarca tfoot th').each( function () {
+	$('#tblCargo tfoot th').each( function () {
     	var title = $(this).text();
     	if (title != "") {
-    		/*$(this).html( '<input type="text" placeholder="Escriba '+title+'" />' );*/
     		$(this).html( '<input type="text"/>' );
     	}
 	});
 
-	var table = $('#tblMarca').DataTable({
+	var table = $('#tblCargo').DataTable({
 		"order": [[0, "asc"]],
 		"language":{
 			"lengthMenu": "Mostrar _MENU_ registros por página",
@@ -23,17 +22,16 @@ $(document).ready(function(){
 				"previous":   "Anterior"
 			},					
 		},
-		//"lengthMenu": [40, 70, 90], Modifica la cantidad de registros mostrados
 		"columnDefs": [
-			{ "orderable": false, "targets": 2},
-	    	{ "orderable": false, "targets": 3 }
+			{ "orderable": false, "targets": 6 }, // Prohibe la ordanacion por eta columna
+	    	{ "orderable": false, "targets": 7 } // Prohibe la ordanacion por eta columna
 	  	],
 		"bProcessing": true,
 		"bServerSide": true,
-		"sAjaxSource": "../../controllers/marca/pagination_process.php"
+		"sAjaxSource": "../../controllers/cargo/pagination_process.php"
 	});
 
-	$("#tblMarca_filter").css("display","none");  // ocultar busqueda global de datatable
+	$("#tblCargo_filter").css("display","none");  // ocultar busqueda global de datatable
 
 	table.columns().every( function () {
         var that = this;
@@ -55,18 +53,21 @@ $(document).ready(function(){
 		/*document.getElementById('nombre').setAttribute('autofocus', 'autofocus');*/
 		$('#confirm-insert').on('click', '#btn-ingresar', function() {
 			var name = $('#confirm-insert #nombre').val();
-			var description = $('#confirm-insert #descripcion').val();
+			var descripcion = $('#confirm-insert #descripcion').val();
+			var sueldoMin = $('#confirm-insert #sueldoMin').val();
+			var sueldoMax = $('#confirm-insert #sueldoMax').val();
 			/*alert(name);*/
-			insert(name, description);
+			insert(name, descripcion, sueldoMin, sueldoMax);
 		});
 	});
 
 	$('#confirm-delete').on('show.bs.modal', function(e) {
 		var button = $(e.relatedTarget); // Botón que activó el modal
 		var nombre = button.data('nombre'); // Extraer la información de atributos de datos
+		var estado = button.data('estado'); // Extraer la información de atributos de datos
 
 		$('#confirm-delete').on('click', '#btn-eliminar', function() {
-			remove(nombre);
+			remove(nombre, estado);
 		});
 
 	});
@@ -75,33 +76,39 @@ $(document).ready(function(){
 		var button = $(e.relatedTarget); // Botón que activó el modal
 		var nombre = button.data('nombre'); // Extraer la información de atributos de datos
 		var descripcion = button.data('descripcion'); // Extraer la información de atributos de datos
+		var sueldoMin = button.data('sueldomin'); // Extraer la información de atributos de datos
+		var sueldoMax = button.data('sueldomax'); // Extraer la información de atributos de datos
 
 		var modal = $(this);
 		modal.find('.modal-content #nombre').val(nombre);
-		modal.find('.modal-content #descripcion').val(descripcion);
-		var reference = modal.find('.modal-content #nombre').val();
+		modal.find('.modal-content #descripcion').val(descripcion);		
+		modal.find('.modal-content #sueldoMin').val(sueldoMin);
+		modal.find('.modal-content #sueldoMax').val(sueldoMax);
 
 		$('#confirm-update').on('click', '#btn-modificar', function(){
 			var name = $('#confirm-update #nombre').val();
-			var description = $('#confirm-update #descripcion').val();
-			modify(name, description, reference);
+			var descripcion = $('#confirm-update #descripcion').val();
+			var sueldoMin = $('#confirm-update #sueldoMin').val();
+			var sueldoMax = $('#confirm-update #sueldoMax').val();
+
+			modify(name, descripcion, sueldoMin, sueldoMax, nombre);
 		});
 	});
 
 });
 
-function modify(nombre, descripcion, referencia) {
+function modify(nombre, descripcion, sueldoMin, sueldoMax, referencia) {
     $.ajax({
-        url: "../../controllers/marca/update.php",
+        url: "../../controllers/cargo/update.php",
         type: "POST",
-        data: "nombre="+nombre+"&descripcion="+descripcion+"&referencia="+referencia,
+        data: "nombre="+nombre+"&descripcion="+descripcion+"&sueldoMin="+sueldoMin+"&sueldoMax="+sueldoMax+"&referencia="+referencia,
         success: function(resp){
     		if (resp) {
     			/*alert(resp);*/
     			$('#msg-modal #message').text('Elemento modificado');
     			$('#msg-modal').modal("show");
     			$('#confirm-update').modal("hide");
-    			$('#tblMarca').DataTable().ajax.reload();
+    			$('#tblCargo').DataTable().ajax.reload();
     		} else {
     			$('#msg-modal #message').text('Ocurrio un problema al momento de modificar el elemento');
     			$('#msg-modal').modal("show");
@@ -110,41 +117,61 @@ function modify(nombre, descripcion, referencia) {
     });
 }
 
-function remove(nombre) {
+function remove(nombre, estado) {
     $.ajax({
-        url: "../../controllers/marca/delete.php",
+        url: "../../controllers/cargo/delete.php",
         type: "POST",
-        data: "nombre="+nombre,
+        data: "nombre="+nombre+"&estado="+estado,
         success: function(resp){
     		if (resp) {
-    			$('#msg-modal #message').text('Elemento eliminado');
+    			if(estado == 'Activo') {
+    				$('#msg-modal #message').text('Elemento eliminado'); 
+    			} else {
+    				$('#msg-modal #message').text('Elemento recuperado'); 
+    			}
     			$('#msg-modal').modal("show");
     			$('#confirm-delete').modal("hide");
-    			$('#tblMarca').DataTable().ajax.reload();
+    			$('#tblCargo').DataTable().ajax.reload();
     		} else {
-    			$('#msg-modal #message').text('Ocurrio un problema al momento de eliminar el elemento');
+    			if (estado == 'Activo') {
+    				$('#msg-modal #message').text('Ocurrio un problema al momento de eliminar el elemento');
+    			} else {
+    				$('#msg-modal #message').text('Ocurrio un problema al momento de recuperar el elemento');
+    			}
     			$('#msg-modal').modal("show");
     		}
         }       
     });
 }
 
-function insert(nombre, descripcion) {
+function insert(nombre, descripcion, sueldoMin, sueldoMax){
 	$.ajax({
-		url: "../../controllers/marca/create.php",
+		url: "../../controllers/cargo/create.php",
 		type: "POST",
-		data: "nombre="+nombre+"&descripcion="+descripcion,
+		data: "nombre="+nombre+"&descripcion="+descripcion+"&sueldoMin="+sueldoMin+"&sueldoMax="+sueldoMax,
 		success: function(resp){
 			if (resp) {
 				/*alert(resp);*/
     			$('#msg-modal #message').text('Elemento insertado');
     			$('#msg-modal').modal("show");
     			$('#confirm-insert').modal("hide");
-    			$('#tblMarca').DataTable().ajax.reload();
+    			$('#tblCargo').DataTable().ajax.reload();
     		} else {
     			$('#msg-modal #message').text('Ocurrio un problema al momento de insertar el elemento');
     			$('#msg-modal').modal("show");
     		}
 		}
 	});
+}
+
+function msg(estado) {
+	if (estado == 0) {
+		$('#confirm-delete .modal-title').text('Recuperar registro');
+		$('.modal-body').text('¿Desea recuperar el registro seleccionado?');
+		$('#btn-eliminar').text('Recuperar');
+	} else {
+		$('#confirm-delete .modal-title').text('Eliminar registro');
+		$('.modal-body').text('¿Desea eliminar el registro seleccionado?');
+		$('#btn-eliminar').text('Eliminar');
+	}
 }
