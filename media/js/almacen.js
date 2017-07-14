@@ -27,6 +27,9 @@ $(document).ready(function(){
 	    	{ "orderable": false, "targets": 4 }, // Prohibe la ordanacion por eta columna
 	    	{ "visible": false,  "targets": 0 } // Para ocultar una columna
 	  	],
+	  	"lengthMenu": [10, 20, 30, 40, 50],
+	  	"iDisplayLength": 10,
+	  	"pageResize": true,
 		"bProcessing": true,
 		"bServerSide": true,
 		"sAjaxSource": "../../controllers/almacen/pagination_process.php"

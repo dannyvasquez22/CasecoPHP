@@ -26,6 +26,9 @@ $(document).ready(function(){
 			{ "orderable": false, "targets": 2},
 	    	{ "orderable": false, "targets": 3 }
 	  	],
+	  	"lengthMenu": [10, 20, 30, 40, 50],
+	  	"iDisplayLength": 10,
+	  	"pageResize": true,
 		"bProcessing": true,
 		"bServerSide": true,
 		"sAjaxSource": "../../controllers/categoria/pagination_process.php"

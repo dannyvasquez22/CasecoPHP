@@ -13,10 +13,12 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/font-awesome.css">
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/sidebar.js"></script>
+		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/sidebar.js" async="async"></script>
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/tether.min.js"></script>
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/jquery.dataTables.min.js"></script>
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/dataTables.fixedColumns.min.js"></script>
+		<!-- Malogra la busqueda TMR -->
+		<!-- <script type="text/javascript" src="<?php echo RUTA; ?>/media/js/dataTables.pageResize.min.js"></script> -->
 		<meta charset="utf-8">
 		<title>Learning 1.0</title>
 	</head>

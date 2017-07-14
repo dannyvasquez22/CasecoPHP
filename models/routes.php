@@ -1,3 +1,3 @@
 <?php	
-	define('RUTA', 'http://localhost/CasecoPHP');
+	define('RUTA', 'http://localhost/Projects/CasecoPHP');
 ?>

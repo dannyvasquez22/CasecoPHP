@@ -23,11 +23,13 @@ $(document).ready(function(){
 				"previous":   "Anterior"
 			},					
 		},
-		//"lengthMenu": [40, 70, 90], Modifica la cantidad de registros mostrados
 		"columnDefs": [
 			{ "orderable": false, "targets": 2},
 	    	{ "orderable": false, "targets": 3 }
 	  	],
+	  	"lengthMenu": [10, 20, 30, 40, 50],
+	  	"iDisplayLength": 10,
+	  	"pageResize": true,
 		"bProcessing": true,
 		"bServerSide": true,
 		"sAjaxSource": "../../controllers/marca/pagination_process.php"

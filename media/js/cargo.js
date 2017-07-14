@@ -1,8 +1,13 @@
 $(document).ready(function(){
+	//primera version
 	$('#tblCargo tfoot th').each( function () {
     	var title = $(this).text();
     	if (title != "") {
-    		$(this).html( '<input type="text"/>' );
+    		if (title == 'Creación') {
+    			$(this).html( '<input type="text" id="fecha"/>' );
+    		} else {
+    			$(this).html( '<input type="text"/>' );
+    		}
     	}
 	});
 
@@ -26,24 +31,55 @@ $(document).ready(function(){
 			{ "orderable": false, "targets": 6 }, // Prohibe la ordanacion por eta columna
 	    	{ "orderable": false, "targets": 7 } // Prohibe la ordanacion por eta columna
 	  	],
+	  	"lengthMenu": [10, 20, 30, 40, 50],
+	  	"iDisplayLength": 10,
+	  	"pageResize": true,
 		"bProcessing": true,
 		"bServerSide": true,
 		"sAjaxSource": "../../controllers/cargo/pagination_process.php"
 	});
 
-	$("#tblCargo_filter").css("display","none");  // ocultar busqueda global de datatable
+/*	$( ".datepicker" ).datepicker({
+	 	dateFormat: "yy-mm-dd",
+		showOn: "button",
+		showAnim: 'slideDown',
+		showButtonPanel: true ,
+		autoSize: true,
+		buttonImage: "//jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+		buttonImageOnly: true,
+		buttonText: "Select date",
+		closeText: "Clear"
+	});*/
 
+	/*$('.employee-search-input').on( 'keyup click change', function () {   
+		var i =$(this).attr('id');  // getting column index
+		var v =$(this).val();  // getting search input value
+		if (v != "") {
+			table.columns(i).search(v).draw();
+    	}
+	} );
+
+	$(document).on("click", ".ui-datepicker-close", function(){
+		$('.datepicker').val("");
+		table.columns(4).search("").draw();
+	});*/
+
+	//$("#tblCargo_filter").css("display","none");  // ocultar busqueda global de datatable
+
+	// primera version
 	table.columns().every( function () {
         var that = this;
  
         $( 'input', this.footer() ).on( 'keyup change', function () {
             if ( that.search() !== this.value ) {
-                that
-                    .search( this.value )
-                    .draw();
+                that.search(this.value).draw();
             }
         });
     });
+
+	$('#fecha').datepicker({
+	    startDate: '-3d'
+	});
 
     $('#confirm-insert').on('hidden.bs.modal', function(){ 
 		$(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.

@@ -10,7 +10,7 @@ interface IUsuario {
     public static function update(Usuario $usuario, $cuenta, $contraseña, $modo);
     public static function insert(Usuario $usuario);
     public static function delete(Usuario $usuario, $status);
-    public static function changeConnection(Usuario $usuario, $connection);
+    public static function changeConnection(Usuario $usuario);
     
     // listar accesos de usuario
     public static function getAccesoUsuarioByFilter($params);

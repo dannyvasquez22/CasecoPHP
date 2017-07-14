@@ -43,8 +43,8 @@ class UsuarioBL {
         return UsuarioDAO::getInstance()->authenticate($user, $password);
     }
     
-    public static function changeConnection(Usuario $usuario, $connection) {
-        return UsuarioDAO::getInstance()->changeConnection($usuario, $connection);
+    public static function changeConnection(Usuario $usuario) {
+        return UsuarioDAO::getInstance()->changeConnection($usuario);
     }
     
     //listar accesos de usuarios

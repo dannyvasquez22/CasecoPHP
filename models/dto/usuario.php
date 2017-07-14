@@ -23,6 +23,11 @@ class Usuario {
     public function __construct1($cuenta) {
         $this->cuenta = $cuenta;
     }
+
+    public function __construct2($cuenta, $estadoConexion) {
+        $this->cuenta = $cuenta;
+        $this->estadoConexion = $estadoConexion;
+    }
     
 /*    public function __construct1($detalleCargo) {
         $this->detalleCargo = $detalleCargo;

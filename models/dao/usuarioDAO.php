@@ -4,6 +4,7 @@ require_once dirname(dirname(__FILE__)) . '/database.php';
 require_once dirname(dirname(__FILE__)) . '/interface/iusuario.php';
 require_once dirname(dirname(__FILE__)) . '/dto/usuario.php';
 include_once dirname(dirname(__FILE__)) . '/passwd.php';
+include_once dirname(dirname(__FILE__)) . '/safe/safer.php';
 
 class UsuarioDAO implements IUsuario {
 	private static $usuario = null;
@@ -114,7 +115,8 @@ class UsuarioDAO implements IUsuario {
     }
 
     public static function authenticate($user, $password) {
-        $contraseña = new Password();
+        $key = hex2bin('000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f');
+        #$contraseña = new Password(); #PHP 5.6.8
         $usuario = null;
         $sql = Database::getInstance()->prepare("SELECT usu_contraseñaPHP, carg_nombre, usu_estado FROM usuario INNER JOIN detalle_cargo ON
         	 usuario.detcarg_codigo = detalle_cargo.detcarg_codigo WHERE usu_cuenta = :cuenta");
@@ -129,12 +131,16 @@ class UsuarioDAO implements IUsuario {
 				$status = $row['usu_estado'];
 			}
             if($status) {
-				$encriptado = $contraseña->encriptar($password);
-				if(strcmp($passwd, $encriptado) == 0) {
+				#$encriptado = $contraseña->encriptar($password); #PHP 5.6.8
+                /*$encrypted = SaferCrypto::encrypt($password, $key, true);*/
+                $decrypted = SaferCrypto::decrypt($passwd, $key, true);
+				if(strcmp($password, $decrypted) == 0) {
 					$_SESSION['cargo_usuario'] = $cargo;
 					$msg = 'OK';
 				} else {					
-					$msg = 'La contraseña es incorrecta';
+                    $msg = 'La contraseña es incorrecta';
+                    #$r = password_hash($password, PASSWORD_DEFAULT); #Este hash se guarda en la BD
+                    #password_verify($password, $r); #Comparacion de hasher, ingresado y luego el almacenado, en este ejemplo $r
 				}
 			} else {
 				$msg = 'El usuario esta inactivo';
@@ -146,10 +152,11 @@ class UsuarioDAO implements IUsuario {
 		return $msg;
     }
 
-    public static function changeConnection(Usuario $usuario, $status) {
+    public static function changeConnection(Usuario $usuario) {
         $result = 0;
         $sql = Database::getInstance()->prepare("UPDATE usuario SET usu_estadoConexion = :estado WHERE usu_cuenta = :cuenta");
-        $sql->bindParam(':estado', $status);
+        /*$sql->bindParam(':estado', $status);*/
+        $sql->bindParam(':estado', $usuario->getEstadoConexion());
         $sql->bindParam(':cuenta', $usuario->getCuenta());
         $result = $sql->execute();
         

@@ -12,8 +12,9 @@
 		$password = $_POST['password'];
 		$msg = UsuarioBL::getInstance()->authenticate($usuario, $password);
 
-		if (strcmp($msg, 'OK') == 0) {			
-			UsuarioBL::getInstance()->changeConnection(new Usuario($usuario), 1);
+		if (strcmp($msg, 'OK') == 0) {
+			$user = new Usuario($usuario, 1);
+			$a = UsuarioBL::getInstance()->changeConnection($user);
 			/*header('Location: welcome.php');*/
 			echo "<script language='javascript'>window.location='welcome.php'</script>";
 		} else {

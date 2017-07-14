@@ -27,7 +27,7 @@ class Database {
 
       $this->_connection = new PDO('mysql:host='.$this->_dbHost.'; dbname='.$this->_dbName, $this->_dbUser, $this->_dbPassword);
       $this->_connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $this->_connection->exec("SET CHARACTER SET utf8");
+      $this->_connection->exec("SET CHARACTER SET utf8mb4");
     } catch (\PDOException $e) {
       print "Error!: " . $e->getMessage();
       die();
