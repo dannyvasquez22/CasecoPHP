@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	var fecha = new Date();
+
 	$('#tblAlmacen tfoot th').each( function () {
     	var title = $(this).text();
     	if (title != "") {
@@ -27,15 +29,75 @@ $(document).ready(function(){
 	    	{ "orderable": false, "targets": 4 }, // Prohibe la ordanacion por eta columna
 	    	{ "visible": false,  "targets": 0 } // Para ocultar una columna
 	  	],
-	  	"lengthMenu": [10, 20, 30, 40, 50],
+	  	"lengthMenu": [[ 10, 20, 30, 40, 50, -1],  [ '10', '20', '30', '40', '50', 'Todos' ]],
 	  	"iDisplayLength": 10,
 	  	"pageResize": true,
 		"bProcessing": true,
 		"bServerSide": true,
-		"sAjaxSource": "../../controllers/almacen/pagination_process.php"
+		"sAjaxSource": "../../controllers/almacen/pagination_process.php",
+		"dom": '<"toolbar">frtip',
+		"dom": 'Bfrtip', 
+        "buttons": [
+            'pageLength', 
+            'copy', 
+            {
+            	extend: 'csv',
+            	title: 'Almacenes_' + fecha.getDate() + "_" + (fecha.getMonth() + 1) + "_" + fecha.getFullYear()
+            },
+            {
+            	extend: 'excel',
+            	customize: function( xlsx ) {
+	                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+	 
+	                $('row c[r^="B"]', sheet).attr( 's', '2' ); //hacer negrita una columna completa --> B significa la columna con el valor alfabetico propio de excel
+	                $('row c[r*="2"]', sheet).attr( 's', '25' ); // borders a una celda --> el 2  especifica la fila empezando a contar desde el titulo como 0
+	            },
+            	title: 'Almacenes_' + fecha.getDate() + "_" + (fecha.getMonth() + 1) + "_" + fecha.getFullYear()
+            },
+            {
+            	extend: 'pdf',
+            	exportOptions: {
+                    //columns: ':visible' // solo las columnas visibles
+                    //columns: [ 0, ':visible' ] //la columna cero y todas las visibles
+                    columns: [ 1, 2 ] //columnas especificas
+                },
+                /*customize: function ( doc ) { // para agregar imagenes, aun con errores tmr
+                    doc.content.splice( 1, 0, {
+                        margin: [ 0, 0, 0, 12 ],
+                        alignment: 'center',
+                        image: '../images/menu3.png'
+                    } );
+                },*/
+            	title: 'Almacenes_' + fecha.getDate() + "_" + (fecha.getMonth() + 1) + "_" + fecha.getFullYear(),
+            	message: 'PDF creado con PDFMake y botones para DataTables.'
+            	/*orientation: 'landscape', // estilos de la pagina
+                pageSize: 'LEGAL'*/
+            },
+            {
+                text: 'JSON',
+                action: function ( e, dt, button, config ) {
+                    var data = dt.buttons.exportData();
+ 
+                    $.fn.dataTable.fileSave(
+                        new Blob( [ JSON.stringify( data ) ] ),
+                        'Almacenes_' + fecha.getDate() + "_" + (fecha.getMonth() + 1) + "_" + fecha.getFullYear() + '.json'
+                    );
+                }
+            },
+            {
+                extend: 'print',
+                message: 'La impresión se logro gracias a el botón Print para DataTables',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }, 
+            'colvis'
+        ]
 	});
 
 	$("#tblAlmacen_filter").css("display","none");  // ocultar busqueda global de datatable
+
+	$("div.toolbar").html('<b>Aquí se encuentran todos los almacénes registrados hasta el momento.</b>');
 
 	table.columns().every( function () {
         var that = this;

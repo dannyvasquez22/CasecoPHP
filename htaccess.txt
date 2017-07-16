@@ -1,0 +1,18 @@
+#prevenir acceso .htaccess
+<files .htaccess>
+order allow,deny
+deny from all
+</files>
+
+#orden de los ficheros de carga por defecto
+DirectoryIndex inicio.html index.htm index.html index.php
+
+#Personalizar errores 404
+ErrorDocument 200 /errores/200.html
+ErrorDocument 300 /errores/300.html
+ErrorDocument 404 /errores/404.html
+ErrorDocument 400 /errores/400.html
+ErrorDocument 500 /errores/500.html
+
+# lenguaje por defecto del servidor
+DefaultLanguage en-ES

@@ -9,14 +9,25 @@
 		<!-- <link rel="stylesheet" type="text/css" href="/media/css/bootstrap-theme.css"> -->
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/myDatatable.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/buttons.dataTables.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/animate.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo RUTA; ?>/media/css/font-awesome.css">
+		<link rel="icon" type="image/x-icon" href="<?php echo RUTA; ?>/media/css/Favicon-blue-fedora/favicon.ico">
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/sidebar.js" async="async"></script>
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/tether.min.js"></script>
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/jquery.dataTables.min.js"></script>
 		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/dataTables.fixedColumns.min.js"></script>
+
+		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/extras-datatables/buttons.colVis.min.js"></script>
+		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/extras-datatables/buttons.flash.min.js"></script>
+		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/extras-datatables/buttons.html5.min.js"></script>
+		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/extras-datatables/buttons.print.min.js"></script>
+		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/extras-datatables/dataTables.buttons.min.js"></script>
+		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/extras-datatables/jszip.min.js"></script>
+		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/extras-datatables/pdfmake.min.js"></script>
+		<script type="text/javascript" src="<?php echo RUTA; ?>/media/js/extras-datatables/vfs_fonts.js"></script>
 		<!-- Malogra la busqueda TMR -->
 		<!-- <script type="text/javascript" src="<?php echo RUTA; ?>/media/js/dataTables.pageResize.min.js"></script> -->
 		<meta charset="utf-8">
