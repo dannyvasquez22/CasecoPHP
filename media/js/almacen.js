@@ -35,7 +35,7 @@ $(document).ready(function(){
 		"bProcessing": true,
 		"bServerSide": true,
 		"sAjaxSource": "../../controllers/almacen/pagination_process.php",
-		"dom": '<"toolbar">frtip',
+		/*"dom": '<"toolbar">frtip',*/
 		"dom": 'Bfrtip', 
         "buttons": [
             'pageLength', 
@@ -97,7 +97,7 @@ $(document).ready(function(){
 
 	$("#tblAlmacen_filter").css("display","none");  // ocultar busqueda global de datatable
 
-	$("div.toolbar").html('<b>Aquí se encuentran todos los almacénes registrados hasta el momento.</b>');
+	/*$("div.toolbar").html('<b>Aquí se encuentran todos los almacénes registrados hasta el momento.</b>');*/
 
 	table.columns().every( function () {
         var that = this;

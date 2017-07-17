@@ -168,7 +168,7 @@ html {
   height: 32px;
   margin-left: 15px;
   position: fixed;
-  top: 20px;
+  top: 10px;
   width: 32px;
   z-index: 999;
 }
@@ -305,4 +305,41 @@ body a {
 }
 body a:hover {
   color: #fff;
+}
+
+/*Menu Pegajoso en la parte top*/
+
+.menu {
+  background: #222222; 
+  color:#fff; 
+  padding-left: 70px;
+  height: 90px; 
+  line-height: 70px;
+  letter-spacing:1px; 
+  width:100%;
+}
+
+.menu-padding {
+  padding-top: 70px;
+}
+
+.list-menu li a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.list-menu li a:hover {
+  background-color: #3e4f7e;
+}
+
+.imagen {
+  padding-left: 45px;
+  padding-top: 10px;
+}
+
+.name_user {
+  float: right;
+  padding-right: 30px;
+  height: 20px;
+  line-height: 50px;
 }

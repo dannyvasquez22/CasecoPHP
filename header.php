@@ -36,10 +36,20 @@
 	
 	<body>
 	    <div id="wrapper">
+	        <div class="menu navbar-collapse collapse" id="navbar-collapsible">
+				<ul class="list-menu nav navbar-nav navbar-left">
+					<li><a href="#section1">Sección 1</a></li>
+					<li><a href="#section2">Sección 2</a></li>
+					<li><a href="#section3">Sección 3</a></li>
+					<li><a href="#section4">Sección 4</a></li>
+				</ul>
+	    		<div class="name_user">Danny<i class="fa fa-fw fa-code"></i></div>
+		    </div>
 	        <div class="overlay"></div>
 	    	<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">		<!-- Sidebar -->
 	            <ul class="nav sidebar-nav">
-	                <li class="sidebar-brand"><a href="#">Menu Principal</a></li>
+	                <li class="sidebar-brand imagen"><img src="media/images/male.png"><a href="#">Danny</a></li>
+	                <li></li>
 	                <li><a href="<?php echo RUTA; ?>/welcome.php"><i class="fa fa-fw fa-home"></i>Inicio</a></li>
 	                <li><a href="#"><i class="fa fa-fw fa-dropbox"></i>Productos</a></li>
 	                <li><a href="#"><i class="fa fa-fw fa-folder"></i>Clientes</a></li>
