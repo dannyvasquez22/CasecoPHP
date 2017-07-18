@@ -39,8 +39,14 @@ $(document).ready(function(){
 		/*"dom": '<"toolbar">frtip',*/
 		"dom": 'Bfrtip', 
         "buttons": [
-            'pageLength', 
-            'copy', 
+            {
+                extend: 'pageLength'
+                /*,text: "Mostrar buttons.pageLength filas"*/ //da error al cambiar de valor
+            }, 
+            {
+                extend: 'copy',
+                text: 'Copiar'
+            }, 
             {
             	extend: 'csv',
             	title: 'Almacenes_' + fecha.getDate() + "_" + (fecha.getMonth() + 1) + "_" + fecha.getFullYear()
@@ -87,6 +93,7 @@ $(document).ready(function(){
             },
             {
                 extend: 'print',
+                text: 'Imprimir',
                 message: 'La impresión se logro gracias a el botón Print para DataTables',
                 exportOptions: {
                     columns: ':visible'
@@ -94,6 +101,7 @@ $(document).ready(function(){
             },
             {
                 extend: 'colvis',
+                text: 'Columnas visibles',
                 columns: [ 0, 1, 2 ]
             }            
         ]
