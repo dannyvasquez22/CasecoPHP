@@ -118,8 +118,11 @@ class UsuarioDAO implements IUsuario {
         $key = hex2bin('000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f');
         #$contraseña = new Password(); #PHP 5.6.8
         $usuario = null;
-        $sql = Database::getInstance()->prepare("SELECT usu_contraseñaPHP, carg_nombre, usu_estado FROM usuario INNER JOIN detalle_cargo ON
-        	 usuario.detcarg_codigo = detalle_cargo.detcarg_codigo WHERE usu_cuenta = :cuenta");
+        $sql = Database::getInstance()->prepare("SELECT usu_contraseñaPHP, carg_nombre, usu_estado, empl_nombreApellidos
+                                                 FROM usuario 
+                                                 INNER JOIN detalle_cargo ON usuario.detcarg_codigo = detalle_cargo.detcarg_codigo 
+                                                 INNER JOIN empleado ON empleado.empl_codigo = detalle_cargo.empl_codigo 
+                                                 WHERE usu_cuenta = :cuenta");
         $sql->bindParam(':cuenta', $user);
         $sql->execute();
 		$rows = $sql->rowCount();
@@ -127,7 +130,8 @@ class UsuarioDAO implements IUsuario {
 		if($rows > 0) {
 			while ($row = $sql->fetch()) {
 				$passwd = $row['usu_contraseñaPHP'];
-				$cargo = $row['carg_nombre'];
+                $cargo = $row['carg_nombre'];
+				$nombre = $row['empl_nombreApellidos'];
 				$status = $row['usu_estado'];
 			}
             if($status) {
@@ -135,7 +139,8 @@ class UsuarioDAO implements IUsuario {
                 /*$encrypted = SaferCrypto::encrypt($password, $key, true);*/
                 $decrypted = SaferCrypto::decrypt($passwd, $key, true);
 				if(strcmp($password, $decrypted) == 0) {
-					$_SESSION['cargo_usuario'] = $cargo;
+                    $_SESSION['cargo_usuario'] = $cargo;
+					$_SESSION['nombre_usuario'] = $nombre;
 					$msg = 'OK';
 				} else {					
                     $msg = 'La contraseña es incorrecta';

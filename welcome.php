@@ -1,24 +1,14 @@
-<?php
-	require_once 'models/routes.php';
-
-	session_start();
-
-	if (!isset($_SESSION['usuario'])) {
-		header('Location: ' . RUTA);
-	}
-?>
- 
-<?php require_once 'header.php'; ?>
+<?php require 'header.php'; ?>
 				<div class="container">
-	                <div class="row">
+	                <!-- <div class="row">
 	                    <div class="col-lg-8 col-lg-offset-2">
-	                        <h1 class="page-header">Bienvenido: <?php echo $_SESSION['usuario'];?></h1>  
+	                        <h1 class="page-header">Bienvenido: /* <php echo $_SESSION['usuario'];?></h1>  
 	                        <p class="lead">En el lado derecho podrá desplegar un menú vertical con todas las opciones disponibles para el administrador.</p>
 	                        <p class="lead">En el lado derecho podrá desplegar un menú vertical con todas las opciones disponibles para el administrador.</p>
 	                        <p class="lead">En el lado derecho podrá desplegar un menú vertical con todas las opciones disponibles para el administrador.</p>
 	                        <p class="lead">En el lado derecho podrá desplegar un menú vertical con todas las opciones disponibles para el administrador.</p>
 	                    </div>
-	            	</div>
+	            	</div> -->
 	            	<section class="container-fluid" id="section1">
 						<h1 class="text-center v-center">Sectionalize.</h1>
 
@@ -85,4 +75,4 @@
 	        </div>        <!-- /#page-content-wrapper -->
 
 	    </div>    <!-- /#wrapper -->
-<?php require_once 'footer.php'; ?>
+<?php require 'footer.php'; ?>

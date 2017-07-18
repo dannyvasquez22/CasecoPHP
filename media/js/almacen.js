@@ -32,6 +32,7 @@ $(document).ready(function(){
 	  	"lengthMenu": [[ 10, 20, 30, 40, 50, -1],  [ '10', '20', '30', '40', '50', 'Todos' ]],
 	  	"iDisplayLength": 10,
 	  	"pageResize": true,
+        "responsive": true,
 		"bProcessing": true,
 		"bServerSide": true,
 		"sAjaxSource": "../../controllers/almacen/pagination_process.php",
@@ -90,10 +91,17 @@ $(document).ready(function(){
                 exportOptions: {
                     columns: ':visible'
                 }
-            }, 
-            'colvis'
+            },
+            {
+                extend: 'colvis',
+                columns: [ 0, 1, 2 ]
+            }            
         ]
 	});
+
+    //le quitamos la clase por defecto que toman los botones del datatable y le asignamos una creada por nosotros
+    $('.dt-buttons>a').removeClass();
+    $('.dt-buttons>a').addClass('btn btn-primary btnExternalDatatable');
 
 	$("#tblAlmacen_filter").css("display","none");  // ocultar busqueda global de datatable
 

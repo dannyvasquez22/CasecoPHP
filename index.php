@@ -23,11 +23,12 @@
 						<label class="label" for="password">Contraseña:</label>
 					</div>
 					<div id="login-alert" class="msgError"></div>
-					<input type="submit" id="btn-submit" value="Ingresar">
+					<input type="submit" id="btn-submit" value="Iniciar sesión">
 				</div>
 			</form>			
 		</div>
 	</div>
+	<div class="fondo">	</div>
 	<script type="text/javascript" src="media/js/formularioLogin.js"></script>
 </body>
 </html>

@@ -60,7 +60,7 @@ html {
   display: none;
 }
 #page-content-wrapper {
-  padding-top: 70px;
+  padding-top: 20px;
   width: 100%;
 }
 /*-------------------------------*/
@@ -335,6 +335,11 @@ body a:hover {
 .imagen {
   padding-left: 45px;
   padding-top: 10px;
+}
+
+.titulo {
+  padding-left: 15px;
+  padding-top: 45px;
 }
 
 .name_user {

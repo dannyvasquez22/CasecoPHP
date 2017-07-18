@@ -1,5 +1,5 @@
 <?php	
-	require_once '../../models/routes.php';
+	require '../../models/routes.php';
 
 	session_start();
 
@@ -7,7 +7,7 @@
 		header('Location: ' . RUTA);
 	}
 
-	require_once '../../header.php'; 
+	require '../../header.php'; 
 ?>
 	<div class="container">
 		<div class="row">

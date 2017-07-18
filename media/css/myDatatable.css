@@ -27,11 +27,14 @@ th, td {
 }
 
 .iconosDatatable {
-    color: rgba(17, 36, 119, 0.8);
+    /*color: rgba(17, 36, 119, 0.8);*/
+    color: white;
 }
 
 .btnExternalDatatable {
     text-decoration: none;
+    margin-right: 5px;
+    margin-bottom: 10px;
 }
 
 div.dataTables_wrapper {
@@ -60,4 +63,37 @@ tfoot {
 
 .toolbar {
     float: left;
+}
+
+
+/*_-----------------------------_*/
+
+
+table.dataTable.stripe tbody tr.even, 
+table.dataTable.display tbody tr.even,
+table.dataTable tbody tr,
+table.dataTable.display tbody tr.odd > .sorting_1, 
+table.dataTable.order-column.stripe tbody tr.odd > .sorting_1,
+table.dataTable.display tbody tr.even > .sorting_1, 
+table.dataTable.order-column.stripe tbody tr.even > .sorting_1,
+table.dataTable.stripe tbody tr.odd, 
+table.dataTable.display tbody tr.odd {
+    background-color: transparent;
+}
+/*table.dataTable {
+    border-collapse: collapse;
+    border: 1.4px solid black;
+}
+
+table.dataTable td, table.dataTable tr, table.dataTable thead tr th, table.dataTable tfoot tr th {
+    border: 1.4px solid black;
+}*/
+
+/*table.dataTable tr, }*/
+table.dataTable tr:last-child td {
+    border-bottom: 2px solid black;
+}
+
+.dataTables_info, .dataTables_paginate {
+    margin-top: 20px;
 }

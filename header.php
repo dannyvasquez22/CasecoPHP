@@ -1,4 +1,12 @@
-<?php require_once 'models/routes.php'; ?>
+<?php
+	require 'models/routes.php';
+
+	session_start();
+
+	if (!isset($_SESSION['usuario'])) {
+		header('Location: ' . RUTA);
+	}
+?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -43,12 +51,13 @@
 					<li><a href="#section3">Sección 3</a></li>
 					<li><a href="#section4">Sección 4</a></li>
 				</ul>
-	    		<div class="name_user">Danny<i class="fa fa-fw fa-code"></i></div>
+	    		<div class="name_user"><?php echo $_SESSION['nombre_usuario']; ?><i class="fa fa-fw fa-code"></i></div>
 		    </div>
 	        <div class="overlay"></div>
 	    	<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">		<!-- Sidebar -->
 	            <ul class="nav sidebar-nav">
-	                <li class="sidebar-brand imagen"><img src="media/images/male.png"><a href="#">Danny</a></li>
+	                <li class="sidebar-brand imagen"><img src="<?php echo RUTA; ?>/media/images/male.png"></li>
+	                <p class="sidebar-brand titulo"><?php echo $_SESSION['nombre_usuario']; ?></p>
 	                <li></li>
 	                <li><a href="<?php echo RUTA; ?>/welcome.php"><i class="fa fa-fw fa-home"></i>Inicio</a></li>
 	                <li><a href="#"><i class="fa fa-fw fa-dropbox"></i>Productos</a></li>
