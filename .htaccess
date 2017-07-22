@@ -1,0 +1,12 @@
+#Denegar acceso a los archivo que tengan estas extensiones
+<FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|json|lock|swp)|~)$">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
+
+#Denegar acceso al archivo especifico htaccess
+<Files .htaccess>
+Order allow,deny
+Deny from all
+</Files>
